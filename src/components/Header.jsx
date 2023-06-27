@@ -23,6 +23,11 @@ const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [logoutApiCall] = useLogoutMutation();
 
+    const handleProfile = () => {
+        setAnchorEl(null);
+        navigate('/profile');
+    };
+
     const handleLogout = async () => {
         setAnchorEl(null);
         try {
@@ -79,7 +84,7 @@ const Header = () => {
                                 open={Boolean(anchorEl)}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleProfile}>Profile</MenuItem>
                                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
                             </Menu>
                         </>
