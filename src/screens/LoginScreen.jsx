@@ -31,14 +31,16 @@ const LoginScreen = () => {
 
     useEffect(() => {
         if (userInfo) {
-            navigate('/');
+            navigate('/dashboard');
         }
     }, [navigate, userInfo]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        console.log(useLoginMutation)
         try {
             const res = await login({ email, password }).unwrap();
+            console.log(res);
             dispatch(setCredentials({ ...res }));
 
         } catch (error) {
