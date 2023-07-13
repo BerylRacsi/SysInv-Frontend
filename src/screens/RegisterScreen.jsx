@@ -54,80 +54,79 @@ const RegisterScreen = () => {
 
     return (
         <>
-            <Box sx={{ pt: 8, pb: 6 }}>
-                <Container maxWidth="sm">
-                    <Card>
-                        <Avatar sx={{ mx: 'auto', mt: 2 }}>
-                            <AccessibleForwardIcon />
-                        </Avatar>
-                        <CardHeader title="Register" titleTypographyProps={{ variant: 'h4', align: 'center' }} />
-                        <Box component="form" onSubmit={submitHandler}>
-                            <CardContent sx={{ mx: 5 }}>
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="name"
-                                    label="Name"
-                                    name="name"
-                                    autoFocus
+            <Container maxWidth="sm">
+                <Card>
+                    <Avatar sx={{ mx: 'auto', mt: 2 }}>
+                        <AccessibleForwardIcon />
+                    </Avatar>
+                    <CardHeader title="Register" titleTypographyProps={{ variant: 'h4', align: 'center' }} />
+                    <Box component="form" onSubmit={submitHandler}>
+                        <CardContent sx={{mx: {sm: 5}}}>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="name"
+                                label="Name"
+                                name="name"
+                                autoFocus
 
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
 
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    id="password"
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
 
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    name="confirm-password"
-                                    label="Confirm Password"
-                                    type="password"
-                                    id="confirm-password"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
 
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
-                            </CardContent>
-                            {isLoading
-                                ?
-                                <Box sx={{ display: 'flex' }}>
-                                    <CircularProgress sx={{ mx: 'auto', mb: 6 }} />
-                                </Box>
-                                :
-                                <CardActions>
-                                    <Button type='submit' variant="contained" color="primary" fullWidth sx={{ mx: 5, mb: 5 }}>
-                                        Sign Up
-                                    </Button>
-                                </CardActions>
-                            }
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="confirm-password"
+                                label="Confirm Password"
+                                type="password"
+                                id="confirm-password"
 
-                        </Box>
-                    </Card>
-                </Container>
-            </Box>
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                        </CardContent>
+                        {isLoading
+                            ?
+                            <Box sx={{ display: 'flex' }}>
+                                <CircularProgress sx={{ mx: 'auto', mb: 6 }} />
+                            </Box>
+                            :
+                            <CardActions>
+                                <Button type='submit' variant="contained" color="primary" fullWidth sx={{ mx: 5, mb: 5 }}>
+                                    Sign Up
+                                </Button>
+                            </CardActions>
+                        }
+
+                    </Box>
+                </Card>
+            </Container>
         </>
     )
 }

@@ -1,26 +1,14 @@
-import { useState, useEffect } from 'react';
 import {
-    Button,
-    Typography
+    Box,
+    Container,
 } from '@mui/material';
-import { useGetItemsQuery } from '../slices/itemApiSlice';
+import Table from '../components/Table';
 
 const DashboardScreen = () => {
-    const [name, setName] = useState('');
 
-    const { data, error, isLoading } = useGetItemsQuery();
-
-    console.log(data)
     return (
         <>
-            {data && data.map((item) => (
-                <Typography variant="h6" key={item._id}>
-                    {item.name}
-                </Typography>
-            ))}
-            <Typography variant="h6" >
-                Dashboard
-            </Typography>
+            <Table />
         </>
     )
 }
