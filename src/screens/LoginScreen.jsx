@@ -31,13 +31,13 @@ const LoginScreen = () => {
 
     useEffect(() => {
         if (userInfo) {
-            navigate('/dashboard');
+            navigate('/');
         }
     }, [navigate, userInfo]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(useLoginMutation)
+
         try {
             const res = await login({ email, password }).unwrap();
             console.log(res);

@@ -1,21 +1,22 @@
 import {
     Box,
     CircularProgress,
-    Typography,
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { useGetItemsQuery } from '../slices/itemApiSlice';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-const Table = () => {
+const Table = (props) => {
 
-    const { data, error, isLoading } = useGetItemsQuery();
+    const { records, columns } = props;
+    const { data, error, isLoading, isError } = records;
+    console.log('gogogo')
+    // const navigate = useNavigate();
 
-    const columns = [
-        { field: '_id', headerName: 'ID', width: 255 },
-        { field: 'name', headerName: 'Name', width: 255 },
-        { field: 'unit', headerName: 'Unit', width: 255 },
-        { field: 'impa', headerName: 'IMPA', width: 255 },
-    ]
+    // const errorHandler = (error) => {
+    //     navigate(-1);
+    //     toast.error(error?.data?.message || error.message);
+    // }
 
     return (
         <>
@@ -25,23 +26,35 @@ const Table = () => {
                     <CircularProgress sx={{ mx: 'auto', mb: 6 }} />
                 </Box>
                 :
-                <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid
-                        getRowId={(row) => row._id}
-                        rows={data}
-                        columns={columns}
-                        initialState={{
-                            pagination: {
-                                paginationModel: {
-                                    pageSize: 5,
+                // status === 'rejected' && error
+                //     ?
+                //     <Box sx={{ display: 'flex' }}>
+                //         {errorHandler(error)}
+                //     </Box>
+                //     :
+                isError
+                    ?
+                    <Box sx={{ display: 'flex' }}>
+                        <h1>{error?.data?.message || error.message}</h1>
+                    </Box>
+                    :
+                    <div style={{ height: 400, width: '100%' }}>
+                        <DataGrid
+                            getRowId={(row) => row._id}
+                            rows={data}
+                            columns={columns}
+                            initialState={{
+                                pagination: {
+                                    paginationModel: {
+                                        pageSize: 5,
+                                    },
                                 },
-                            },
-                        }}
-                        pageSizeOptions={[5]}
-                        checkboxSelection
-                        disableRowSelectionOnClick
-                    />
-                </div>
+                            }}
+                            pageSizeOptions={[5]}
+                            checkboxSelection
+                            disableRowSelectionOnClick
+                        />
+                    </div>
             }
         </>
     )

@@ -90,11 +90,17 @@ const Header = (props) => {
                     </ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItemButton>
-                <ListItemButton onClick={() => { navigate('/dashboard') }}>
+                <ListItemButton onClick={() => { navigate('/item') }}>
                     <ListItemIcon>
                         <AccessibleForwardIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Dashboard" />
+                    <ListItemText primary="Item" />
+                </ListItemButton>
+                <ListItemButton onClick={() => { navigate('/user') }}>
+                    <ListItemIcon>
+                        <AccessibleForwardIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="User" />
                 </ListItemButton>
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
